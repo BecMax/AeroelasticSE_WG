@@ -1,0 +1,2 @@
+cat FST_vartrees_AD15_out.py | cut -d "." -f2 | cut -d " " -f1 > input_file.txt
+grep -vf input_file.txt OutListParameters_AD15.txt > output_file.txt

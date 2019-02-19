@@ -1,0 +1,178 @@
+running install
+running bdist_egg
+running egg_info
+writing src\AeroelasticSE.egg-info\PKG-INFO
+writing top-level names to src\AeroelasticSE.egg-info\top_level.txt
+writing dependency_links to src\AeroelasticSE.egg-info\dependency_links.txt
+reading manifest file 'src\AeroelasticSE.egg-info\SOURCES.txt'
+reading manifest template 'MANIFEST.in'
+writing manifest file 'src\AeroelasticSE.egg-info\SOURCES.txt'
+installing library code to build\bdist.win-amd64\egg
+running install_lib
+running build_py
+creating build
+creating build\lib
+creating build\lib\AeroelasticSE
+copying src\AeroelasticSE\DLCrunner.py -> build\lib\AeroelasticSE
+creating build\lib\AeroelasticSE\FAST_mdao
+copying src\AeroelasticSE\FAST_mdao\FST8_aeroelasticsolver.py -> build\lib\AeroelasticSE\FAST_mdao
+copying src\AeroelasticSE\FAST_mdao\FST8_group.py -> build\lib\AeroelasticSE\FAST_mdao
+copying src\AeroelasticSE\FAST_mdao\FST8_reader.py -> build\lib\AeroelasticSE\FAST_mdao
+copying src\AeroelasticSE\FAST_mdao\FST8_wrapper.py -> build\lib\AeroelasticSE\FAST_mdao
+copying src\AeroelasticSE\FAST_mdao\FST8_writer.py -> build\lib\AeroelasticSE\FAST_mdao
+copying src\AeroelasticSE\FAST_mdao\FST_vartrees_new.py -> build\lib\AeroelasticSE\FAST_mdao
+copying src\AeroelasticSE\FAST_mdao\FST_vartrees_out.py -> build\lib\AeroelasticSE\FAST_mdao
+creating build\lib\AeroelasticSE\Turbsim_mdao
+copying src\AeroelasticSE\Turbsim_mdao\FastTurbsim.py -> build\lib\AeroelasticSE\Turbsim_mdao
+copying src\AeroelasticSE\Turbsim_mdao\turbsim_openmdao.py -> build\lib\AeroelasticSE\Turbsim_mdao
+copying src\AeroelasticSE\Turbsim_mdao\turbsim_reader.py -> build\lib\AeroelasticSE\Turbsim_mdao
+copying src\AeroelasticSE\Turbsim_mdao\turbsim_vartrees.py -> build\lib\AeroelasticSE\Turbsim_mdao
+copying src\AeroelasticSE\Turbsim_mdao\turbsim_wrapper.py -> build\lib\AeroelasticSE\Turbsim_mdao
+copying src\AeroelasticSE\Turbsim_mdao\turbsim_writer.py -> build\lib\AeroelasticSE\Turbsim_mdao
+copying src\AeroelasticSE\Turbsim_mdao\turbulence_spectrum.py -> build\lib\AeroelasticSE\Turbsim_mdao
+creating build\bdist.win-amd64
+creating build\bdist.win-amd64\egg
+creating build\bdist.win-amd64\egg\AeroelasticSE
+copying build\lib\AeroelasticSE\DLCrunner.py -> build\bdist.win-amd64\egg\AeroelasticSE
+creating build\bdist.win-amd64\egg\AeroelasticSE\FAST_mdao
+copying build\lib\AeroelasticSE\FAST_mdao\FST8_aeroelasticsolver.py -> build\bdist.win-amd64\egg\AeroelasticSE\FAST_mdao
+copying build\lib\AeroelasticSE\FAST_mdao\FST8_group.py -> build\bdist.win-amd64\egg\AeroelasticSE\FAST_mdao
+copying build\lib\AeroelasticSE\FAST_mdao\FST8_reader.py -> build\bdist.win-amd64\egg\AeroelasticSE\FAST_mdao
+copying build\lib\AeroelasticSE\FAST_mdao\FST8_wrapper.py -> build\bdist.win-amd64\egg\AeroelasticSE\FAST_mdao
+copying build\lib\AeroelasticSE\FAST_mdao\FST8_writer.py -> build\bdist.win-amd64\egg\AeroelasticSE\FAST_mdao
+copying build\lib\AeroelasticSE\FAST_mdao\FST_vartrees_new.py -> build\bdist.win-amd64\egg\AeroelasticSE\FAST_mdao
+copying build\lib\AeroelasticSE\FAST_mdao\FST_vartrees_out.py -> build\bdist.win-amd64\egg\AeroelasticSE\FAST_mdao
+creating build\bdist.win-amd64\egg\AeroelasticSE\Turbsim_mdao
+copying build\lib\AeroelasticSE\Turbsim_mdao\FastTurbsim.py -> build\bdist.win-amd64\egg\AeroelasticSE\Turbsim_mdao
+copying build\lib\AeroelasticSE\Turbsim_mdao\turbsim_openmdao.py -> build\bdist.win-amd64\egg\AeroelasticSE\Turbsim_mdao
+copying build\lib\AeroelasticSE\Turbsim_mdao\turbsim_reader.py -> build\bdist.win-amd64\egg\AeroelasticSE\Turbsim_mdao
+copying build\lib\AeroelasticSE\Turbsim_mdao\turbsim_vartrees.py -> build\bdist.win-amd64\egg\AeroelasticSE\Turbsim_mdao
+copying build\lib\AeroelasticSE\Turbsim_mdao\turbsim_wrapper.py -> build\bdist.win-amd64\egg\AeroelasticSE\Turbsim_mdao
+copying build\lib\AeroelasticSE\Turbsim_mdao\turbsim_writer.py -> build\bdist.win-amd64\egg\AeroelasticSE\Turbsim_mdao
+copying build\lib\AeroelasticSE\Turbsim_mdao\turbulence_spectrum.py -> build\bdist.win-amd64\egg\AeroelasticSE\Turbsim_mdao
+byte-compiling build\bdist.win-amd64\egg\AeroelasticSE\DLCrunner.py to DLCrunner.pyc
+byte-compiling build\bdist.win-amd64\egg\AeroelasticSE\FAST_mdao\FST8_aeroelasticsolver.py to FST8_aeroelasticsolver.pyc
+byte-compiling build\bdist.win-amd64\egg\AeroelasticSE\FAST_mdao\FST8_group.py to FST8_group.pyc
+byte-compiling build\bdist.win-amd64\egg\AeroelasticSE\FAST_mdao\FST8_reader.py to FST8_reader.pyc
+byte-compiling build\bdist.win-amd64\egg\AeroelasticSE\FAST_mdao\FST8_wrapper.py to FST8_wrapper.pyc
+byte-compiling build\bdist.win-amd64\egg\AeroelasticSE\FAST_mdao\FST8_writer.py to FST8_writer.pyc
+byte-compiling build\bdist.win-amd64\egg\AeroelasticSE\FAST_mdao\FST_vartrees_new.py to FST_vartrees_new.pyc
+byte-compiling build\bdist.win-amd64\egg\AeroelasticSE\FAST_mdao\FST_vartrees_out.py to FST_vartrees_out.pyc
+byte-compiling build\bdist.win-amd64\egg\AeroelasticSE\Turbsim_mdao\FastTurbsim.py to FastTurbsim.pyc
+byte-compiling build\bdist.win-amd64\egg\AeroelasticSE\Turbsim_mdao\turbsim_openmdao.py to turbsim_openmdao.pyc
+byte-compiling build\bdist.win-amd64\egg\AeroelasticSE\Turbsim_mdao\turbsim_reader.py to turbsim_reader.pyc
+byte-compiling build\bdist.win-amd64\egg\AeroelasticSE\Turbsim_mdao\turbsim_vartrees.py to turbsim_vartrees.pyc
+byte-compiling build\bdist.win-amd64\egg\AeroelasticSE\Turbsim_mdao\turbsim_wrapper.py to turbsim_wrapper.pyc
+byte-compiling build\bdist.win-amd64\egg\AeroelasticSE\Turbsim_mdao\turbsim_writer.py to turbsim_writer.pyc
+byte-compiling build\bdist.win-amd64\egg\AeroelasticSE\Turbsim_mdao\turbulence_spectrum.py to turbulence_spectrum.pyc
+creating build\bdist.win-amd64\egg\EGG-INFO
+copying src\AeroelasticSE.egg-info\PKG-INFO -> build\bdist.win-amd64\egg\EGG-INFO
+copying src\AeroelasticSE.egg-info\SOURCES.txt -> build\bdist.win-amd64\egg\EGG-INFO
+copying src\AeroelasticSE.egg-info\dependency_links.txt -> build\bdist.win-amd64\egg\EGG-INFO
+copying src\AeroelasticSE.egg-info\not-zip-safe -> build\bdist.win-amd64\egg\EGG-INFO
+copying src\AeroelasticSE.egg-info\top_level.txt -> build\bdist.win-amd64\egg\EGG-INFO
+creating dist
+creating 'dist\AeroelasticSE-0.1.0-py2.7.egg' and adding 'build\bdist.win-amd64\egg' to it
+removing 'build\bdist.win-amd64\egg' (and everything under it)
+Processing AeroelasticSE-0.1.0-py2.7.egg
+creating c:\users\max.becker\appdata\local\continuum\anaconda3\envs\maxenv\lib\site-packages\AeroelasticSE-0.1.0-py2.7.egg
+Extracting AeroelasticSE-0.1.0-py2.7.egg to c:\users\max.becker\appdata\local\continuum\anaconda3\envs\maxenv\lib\site-packages
+Adding AeroelasticSE 0.1.0 to easy-install.pth file
+
+Installed c:\users\max.becker\appdata\local\continuum\anaconda3\envs\maxenv\lib\site-packages\aeroelasticse-0.1.0-py2.7.egg
+Processing dependencies for AeroelasticSE==0.1.0
+Finished processing dependencies for AeroelasticSE==0.1.0
+running install
+running bdist_egg
+running egg_info
+writing src\AeroelasticSE.egg-info\PKG-INFO
+writing top-level names to src\AeroelasticSE.egg-info\top_level.txt
+writing dependency_links to src\AeroelasticSE.egg-info\dependency_links.txt
+reading manifest file 'src\AeroelasticSE.egg-info\SOURCES.txt'
+reading manifest template 'MANIFEST.in'
+writing manifest file 'src\AeroelasticSE.egg-info\SOURCES.txt'
+installing library code to build\bdist.win-amd64\egg
+running install_lib
+running build_py
+creating build
+creating build\lib
+creating build\lib\AeroelasticSE
+copying src\AeroelasticSE\DLCrunner.py -> build\lib\AeroelasticSE
+copying src\AeroelasticSE\__init__.py -> build\lib\AeroelasticSE
+creating build\lib\AeroelasticSE\FAST_mdao
+copying src\AeroelasticSE\FAST_mdao\FST8_aeroelasticsolver.py -> build\lib\AeroelasticSE\FAST_mdao
+copying src\AeroelasticSE\FAST_mdao\FST8_group.py -> build\lib\AeroelasticSE\FAST_mdao
+copying src\AeroelasticSE\FAST_mdao\FST8_reader.py -> build\lib\AeroelasticSE\FAST_mdao
+copying src\AeroelasticSE\FAST_mdao\FST8_wrapper.py -> build\lib\AeroelasticSE\FAST_mdao
+copying src\AeroelasticSE\FAST_mdao\FST8_writer.py -> build\lib\AeroelasticSE\FAST_mdao
+copying src\AeroelasticSE\FAST_mdao\FST_vartrees_new.py -> build\lib\AeroelasticSE\FAST_mdao
+copying src\AeroelasticSE\FAST_mdao\FST_vartrees_out.py -> build\lib\AeroelasticSE\FAST_mdao
+copying src\AeroelasticSE\FAST_mdao\__init__.py -> build\lib\AeroelasticSE\FAST_mdao
+creating build\lib\AeroelasticSE\Turbsim_mdao
+copying src\AeroelasticSE\Turbsim_mdao\FastTurbsim.py -> build\lib\AeroelasticSE\Turbsim_mdao
+copying src\AeroelasticSE\Turbsim_mdao\turbsim_openmdao.py -> build\lib\AeroelasticSE\Turbsim_mdao
+copying src\AeroelasticSE\Turbsim_mdao\turbsim_reader.py -> build\lib\AeroelasticSE\Turbsim_mdao
+copying src\AeroelasticSE\Turbsim_mdao\turbsim_vartrees.py -> build\lib\AeroelasticSE\Turbsim_mdao
+copying src\AeroelasticSE\Turbsim_mdao\turbsim_wrapper.py -> build\lib\AeroelasticSE\Turbsim_mdao
+copying src\AeroelasticSE\Turbsim_mdao\turbsim_writer.py -> build\lib\AeroelasticSE\Turbsim_mdao
+copying src\AeroelasticSE\Turbsim_mdao\turbulence_spectrum.py -> build\lib\AeroelasticSE\Turbsim_mdao
+copying src\AeroelasticSE\Turbsim_mdao\__init__.py -> build\lib\AeroelasticSE\Turbsim_mdao
+creating build\bdist.win-amd64
+creating build\bdist.win-amd64\egg
+creating build\bdist.win-amd64\egg\AeroelasticSE
+copying build\lib\AeroelasticSE\DLCrunner.py -> build\bdist.win-amd64\egg\AeroelasticSE
+creating build\bdist.win-amd64\egg\AeroelasticSE\FAST_mdao
+copying build\lib\AeroelasticSE\FAST_mdao\FST8_aeroelasticsolver.py -> build\bdist.win-amd64\egg\AeroelasticSE\FAST_mdao
+copying build\lib\AeroelasticSE\FAST_mdao\FST8_group.py -> build\bdist.win-amd64\egg\AeroelasticSE\FAST_mdao
+copying build\lib\AeroelasticSE\FAST_mdao\FST8_reader.py -> build\bdist.win-amd64\egg\AeroelasticSE\FAST_mdao
+copying build\lib\AeroelasticSE\FAST_mdao\FST8_wrapper.py -> build\bdist.win-amd64\egg\AeroelasticSE\FAST_mdao
+copying build\lib\AeroelasticSE\FAST_mdao\FST8_writer.py -> build\bdist.win-amd64\egg\AeroelasticSE\FAST_mdao
+copying build\lib\AeroelasticSE\FAST_mdao\FST_vartrees_new.py -> build\bdist.win-amd64\egg\AeroelasticSE\FAST_mdao
+copying build\lib\AeroelasticSE\FAST_mdao\FST_vartrees_out.py -> build\bdist.win-amd64\egg\AeroelasticSE\FAST_mdao
+copying build\lib\AeroelasticSE\FAST_mdao\__init__.py -> build\bdist.win-amd64\egg\AeroelasticSE\FAST_mdao
+creating build\bdist.win-amd64\egg\AeroelasticSE\Turbsim_mdao
+copying build\lib\AeroelasticSE\Turbsim_mdao\FastTurbsim.py -> build\bdist.win-amd64\egg\AeroelasticSE\Turbsim_mdao
+copying build\lib\AeroelasticSE\Turbsim_mdao\turbsim_openmdao.py -> build\bdist.win-amd64\egg\AeroelasticSE\Turbsim_mdao
+copying build\lib\AeroelasticSE\Turbsim_mdao\turbsim_reader.py -> build\bdist.win-amd64\egg\AeroelasticSE\Turbsim_mdao
+copying build\lib\AeroelasticSE\Turbsim_mdao\turbsim_vartrees.py -> build\bdist.win-amd64\egg\AeroelasticSE\Turbsim_mdao
+copying build\lib\AeroelasticSE\Turbsim_mdao\turbsim_wrapper.py -> build\bdist.win-amd64\egg\AeroelasticSE\Turbsim_mdao
+copying build\lib\AeroelasticSE\Turbsim_mdao\turbsim_writer.py -> build\bdist.win-amd64\egg\AeroelasticSE\Turbsim_mdao
+copying build\lib\AeroelasticSE\Turbsim_mdao\turbulence_spectrum.py -> build\bdist.win-amd64\egg\AeroelasticSE\Turbsim_mdao
+copying build\lib\AeroelasticSE\Turbsim_mdao\__init__.py -> build\bdist.win-amd64\egg\AeroelasticSE\Turbsim_mdao
+copying build\lib\AeroelasticSE\__init__.py -> build\bdist.win-amd64\egg\AeroelasticSE
+byte-compiling build\bdist.win-amd64\egg\AeroelasticSE\DLCrunner.py to DLCrunner.pyc
+byte-compiling build\bdist.win-amd64\egg\AeroelasticSE\FAST_mdao\FST8_aeroelasticsolver.py to FST8_aeroelasticsolver.pyc
+byte-compiling build\bdist.win-amd64\egg\AeroelasticSE\FAST_mdao\FST8_group.py to FST8_group.pyc
+byte-compiling build\bdist.win-amd64\egg\AeroelasticSE\FAST_mdao\FST8_reader.py to FST8_reader.pyc
+byte-compiling build\bdist.win-amd64\egg\AeroelasticSE\FAST_mdao\FST8_wrapper.py to FST8_wrapper.pyc
+byte-compiling build\bdist.win-amd64\egg\AeroelasticSE\FAST_mdao\FST8_writer.py to FST8_writer.pyc
+byte-compiling build\bdist.win-amd64\egg\AeroelasticSE\FAST_mdao\FST_vartrees_new.py to FST_vartrees_new.pyc
+byte-compiling build\bdist.win-amd64\egg\AeroelasticSE\FAST_mdao\FST_vartrees_out.py to FST_vartrees_out.pyc
+byte-compiling build\bdist.win-amd64\egg\AeroelasticSE\FAST_mdao\__init__.py to __init__.pyc
+byte-compiling build\bdist.win-amd64\egg\AeroelasticSE\Turbsim_mdao\FastTurbsim.py to FastTurbsim.pyc
+byte-compiling build\bdist.win-amd64\egg\AeroelasticSE\Turbsim_mdao\turbsim_openmdao.py to turbsim_openmdao.pyc
+byte-compiling build\bdist.win-amd64\egg\AeroelasticSE\Turbsim_mdao\turbsim_reader.py to turbsim_reader.pyc
+byte-compiling build\bdist.win-amd64\egg\AeroelasticSE\Turbsim_mdao\turbsim_vartrees.py to turbsim_vartrees.pyc
+byte-compiling build\bdist.win-amd64\egg\AeroelasticSE\Turbsim_mdao\turbsim_wrapper.py to turbsim_wrapper.pyc
+byte-compiling build\bdist.win-amd64\egg\AeroelasticSE\Turbsim_mdao\turbsim_writer.py to turbsim_writer.pyc
+byte-compiling build\bdist.win-amd64\egg\AeroelasticSE\Turbsim_mdao\turbulence_spectrum.py to turbulence_spectrum.pyc
+byte-compiling build\bdist.win-amd64\egg\AeroelasticSE\Turbsim_mdao\__init__.py to __init__.pyc
+byte-compiling build\bdist.win-amd64\egg\AeroelasticSE\__init__.py to __init__.pyc
+creating build\bdist.win-amd64\egg\EGG-INFO
+copying src\AeroelasticSE.egg-info\PKG-INFO -> build\bdist.win-amd64\egg\EGG-INFO
+copying src\AeroelasticSE.egg-info\SOURCES.txt -> build\bdist.win-amd64\egg\EGG-INFO
+copying src\AeroelasticSE.egg-info\dependency_links.txt -> build\bdist.win-amd64\egg\EGG-INFO
+copying src\AeroelasticSE.egg-info\not-zip-safe -> build\bdist.win-amd64\egg\EGG-INFO
+copying src\AeroelasticSE.egg-info\top_level.txt -> build\bdist.win-amd64\egg\EGG-INFO
+creating dist
+creating 'dist\AeroelasticSE-0.1.0-py2.7.egg' and adding 'build\bdist.win-amd64\egg' to it
+removing 'build\bdist.win-amd64\egg' (and everything under it)
+Processing AeroelasticSE-0.1.0-py2.7.egg
+removing 'c:\users\max.becker\appdata\local\continuum\anaconda3\envs\maxenv\lib\site-packages\AeroelasticSE-0.1.0-py2.7.egg' (and everything under it)
+creating c:\users\max.becker\appdata\local\continuum\anaconda3\envs\maxenv\lib\site-packages\AeroelasticSE-0.1.0-py2.7.egg
+Extracting AeroelasticSE-0.1.0-py2.7.egg to c:\users\max.becker\appdata\local\continuum\anaconda3\envs\maxenv\lib\site-packages
+AeroelasticSE 0.1.0 is already the active version in easy-install.pth
+
+Installed c:\users\max.becker\appdata\local\continuum\anaconda3\envs\maxenv\lib\site-packages\aeroelasticse-0.1.0-py2.7.egg
+Processing dependencies for AeroelasticSE==0.1.0
+Finished processing dependencies for AeroelasticSE==0.1.0

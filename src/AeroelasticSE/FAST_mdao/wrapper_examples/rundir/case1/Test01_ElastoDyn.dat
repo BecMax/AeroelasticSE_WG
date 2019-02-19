@@ -1,0 +1,132 @@
+---
+---
+---
+False
+  3
+0.00400
+---
+9.80665
+---
+True
+True
+True
+True
+True
+True
+False
+True
+True
+True
+True
+False
+False
+False
+False
+False
+False
+---
+0.00000
+0.00000
+-1.00000
+-1.00000
+-1.00000
+0.00000
+0.00000
+53.33300
+-15.00000
+0.00000
+0.00000
+0.00000
+0.00000
+0.00000
+0.00000
+0.00000
+0.00000
+---
+  2
+13.75700
+1.18400
+7.00000
+7.00000
+7.00000
+0.40600
+0.15300
+0.00000
+0.00000
+2.43200
+-0.20000
+0.00000
+0.19300
+0.00000
+0.68400
+0.00000
+0.00000
+0.00000
+0.69200
+41.98000
+0.00000
+0.00000
+0.00000
+-0.00000
+-0.00000
+---
+11.34000
+11.34000
+11.34000
+1330.00000
+335.34000
+59.26000
+5015.43000
+4604.84000
+0.00000
+0.00000
+0.00000
+0.00000
+0.00000
+---
+ 10
+"AWT_Blades.dat"
+"AWT_Blades.dat"
+"AWT_Blades.dat"
+---
+  1
+0.00000
+40000.00000
+0.00000
+0.00000
+180.00000
+1.00000
+5000000.00000
+---
+100.00000
+22.50000
+50000000.00000
+1000000.00000
+---
+False
+"unused"
+---
+ 21
+"AWT_Tower.dat"
+---
+True
+  1
+True
+"ES10.3E2"
+10.00000
+  5
+  0
+          0   TwrGagNd    - List of tower nodes that have strain gages [1 to TwrNodes] (-) [unused if NTwGages=0]
+  3
+          3,           5,           7    BldGagNd    - List of blade nodes that have strain gages [1 to BldNodes] (-) [unused if NBlGages=0]
+Outlist
+""
+"Spn2ALxb1, TipDyb2, TipDxb2, Spn2ALyb1, TipALyb2, TipALxb2, "
+"LSSGagPxa, TeetDefl, LSSGagVxa, "
+"YawBrRDyt, YawBrRAxp, YawBrRVyp, YawBrRDxt, YawBrRAyp, YawBrRVxp, "
+""
+"RootFxc2, Spn3MLxb1, RootMyc1, RootFyc2, Spn3MLyb1, RootMxc1, "
+"RotTorq, "
+"YawBrMzn, TwrBsMzt, "
+""
+END

@@ -1,0 +1,38 @@
+Aerodyn input file for FAST
+SI
+BEDDOES
+NO_CM
+DYNIN
+SWIRL
+0.005
+PRANDtl
+NONE
+0.3
+1.0
+2.4
+1.225
+0.000014639
+0.004
+10
+"AeroData\Airfoil0.dat"
+"AeroData\Airfoil1.dat"
+"AeroData\Airfoil2.dat"
+"AeroData\Airfoil3.dat"
+"AeroData\Airfoil4.dat"
+"AeroData\Airfoil5.dat"
+"AeroData\Airfoil6.dat"
+"AeroData\Airfoil7.dat"
+"AeroData\Airfoil8.dat"
+"AeroData\Airfoil9.dat"
+10
+Nodal properties
+1.81265	5.800	1.2573	0.859	    1	PRINT
+3.06995	5.200	1.2573	1.045	    2	PRINT
+4.32725	4.660	1.2573	1.145	    3	PRINT
+5.58455	3.730	1.2573	1.124	    4	PRINT
+6.84185	2.640	1.2573	1.054	    5	PRINT
+8.09915	1.590	1.2573	0.976	    6	PRINT
+9.35645	0.730	1.2573	0.885	    7	PRINT
+10.61375	0.230	1.2573	0.775	    8	PRINT
+11.87105	0.080	1.2573	0.651	    9	PRINT
+13.12835	0.030	1.2573	0.493	   10	PRINT
