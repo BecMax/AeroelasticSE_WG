@@ -1,0 +1,54 @@
+---
+---
+---
+True
+"FATAL"
+60.00000
+0.00625
+  2
+  0
+99999.00000
+1000000.00000
+---
+  1
+  1
+  2
+  1
+  0
+  0
+  0
+  0
+---
+"NRELOffshrBsline5MW_Onshore_ElastoDyn.dat"
+"../../../01_Model/NRELOffshrBsline5MW_BeamDyn.dat"
+"../../../01_Model/NRELOffshrBsline5MW_BeamDyn.dat"
+"../../../01_Model/NRELOffshrBsline5MW_BeamDyn.dat"
+"NRELOffshrBsline5MW_InflowWind_12mps.dat"
+"../../../01_Model/NRELOffshrBsline5MW_Onshore_AeroDyn15.dat"
+"NRELOffshrBsline5MW_Onshore_ServoDyn.dat"
+"unused"
+"unused"
+"unused"
+"unused"
+---
+True
+5.00000
+99999.00000
+"default"
+0.00000
+  1
+True
+"ES10.3E2"
+---
+False
+2
+30, 60
+1
+1
+False
+False
+---
+  0
+  1
+True
+15.00000
