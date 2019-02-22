@@ -53,6 +53,8 @@ class turbsimReader(object):
         self.turbsim_vt.metboundconds.IECstandard = inpf.readline().split()[0]
         self.turbsim_vt.metboundconds.IECturbc = inpf.readline().split()[0]
         self.turbsim_vt.metboundconds.IEC_WindType = inpf.readline().split()[0]
+        self.turbsim_vt.metboundconds.IEC_Vav = inpf.readline().split()[0]
+        self.turbsim_vt.metboundconds.IEC_Vref = inpf.readline().split()[0]
         self.turbsim_vt.metboundconds.ETMc = inpf.readline().split()[0]
         self.turbsim_vt.metboundconds.WindProfileType = inpf.readline().split()[0]
         self.turbsim_vt.metboundconds.ProfileFile = inpf.readline().split()[0]
@@ -63,7 +65,7 @@ class turbsimReader(object):
         self.turbsim_vt.metboundconds.Z0 = inpf.readline().split()[0]
 
 
-        # Meteorological Boundary Conditions 
+        # Non-IEC Meteorological Boundary Conditions 
         inpf.readline()
         inpf.readline()
         self.turbsim_vt.noniecboundconds.Latitude = inpf.readline().split()[0]

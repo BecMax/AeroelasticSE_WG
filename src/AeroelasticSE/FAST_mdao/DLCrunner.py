@@ -28,8 +28,22 @@ else:
     from openmdao.core.basic_impl import BasicImpl as impl
 from FST8_aeroelasticsolver import FST8Workflow, FST8AeroElasticSolver
 from AeroelasticSE.Turbsim_mdao.turbsim_new import TurbsimWorkflow, TurbSim_Solver
-
 from openmdao.api import view_tree
+
+import argparse
+
+# https://stackoverflow.com/questions/40807862/python-argparse-with-mandatory-input-file-argument
+#Create the parser
+parser = argparse.ArgumentParser(description='Does some stuff with an input file.')
+
+#add the argument
+parser.add_argument('-i', '--input', dest='infile', required=True,
+                metavar='INPUT_FILE', help='The input file to the script.')
+
+#parse and assign to the variable
+args = parser.parse_args()
+infile=args.infile
+print infile
 
 # Initial OpenMDAO problem setup for parallel group
 top = Problem(impl=impl, root=ParallelFDGroup(1))
@@ -69,7 +83,7 @@ dlc_cfg['PitchAngles'] = [0.0, 90.0] #Pitch Angles to be used; sets automaticall
 # ===================== Some Parameters from Inputs =====================
 
 if dlc_cfg['SettingsFromExcel'] == True:
-    df = pd.read_excel(os.path.join('./ExampleCaseOF/02_Run/DLC1.4', dlc_cfg['ExcelFile']), comment='#' ) 
+    df = pd.read_excel(os.path.join(os.getcwd(), infile), comment='#' ) 
 
     df = df.set_index('Parameters').T
     for key in dlc_cfg:
@@ -168,7 +182,7 @@ for i in range(dlc_cfg['NoWSBins']):
                             dirchangestr1 = '-'
                             dirchangestr11 = 'Neg' #OpenMDAO cant deal with +/- signs in case ids
                         else:
-                            print 'WindDirChange needs to be either positiveor negative sweep'
+                            print 'WindDirChange needs to be either positive or negative sweep'
                         windid = windid + '_%s' % dirchangestr11
       
                     cfg_wind = {}
@@ -176,21 +190,24 @@ for i in range(dlc_cfg['NoWSBins']):
                     # Turbsim case windfiles
                     if dlc_cfg['WindModel'] == 'NTM':
                         cfg_wind['Turbsim_masterfile'] = 'NTM.inp' 
-                        cfg_wind['Turbsim_masterdir']= './ExampleCaseOF/04_Wind/NTM/'
+                        cfg_wind['Turbsim_masterdir']= './ExampleCaseOF/04_Wind'
                         windinput = windid
                     elif dlc_cfg['WindModel'] == 'NWP':
-                    # Still needs to be added
+                        # Just NTM without any turbulence, thus TI = 0
+                        cfg_wind['Turbsim_masterfile'] = 'NWP.inp' 
+                        cfg_wind['Turbsim_masterdir']= './ExampleCaseOF/04_Wind'
+                        windinput = windid + '_NWP'
                         pass
                     elif dlc_cfg['WindModel'] == 'ETM':
                         cfg_wind['Turbsim_masterfile'] = 'ETM.inp' 
-                        cfg_wind['Turbsim_masterdir']= './ExampleCaseOF/04_Wind/ETM/'
+                        cfg_wind['Turbsim_masterdir']= './ExampleCaseOF/04_Wind'
                         windinput = windid + '_ETM'
                     
                     # These parameters are the same for all turbsim cases    
                     if dlc_cfg['WindModel'] == 'NTM' or dlc_cfg['WindModel'] == 'NWP' or dlc_cfg['WindModel'] == 'ETM':
                         cfg_wind['Turbsim_runfile'] ='{0}.inp'.format(windinput)
                         cfg_wind['Turbsim_rundir'] = './ExampleCaseOF/04_Wind/' 
-                        cfg_wind['Turbsim_exe']= 'TurbSim_x64'
+                        cfg_wind['Turbsim_exe']= 'TurbSim_gwin64'
                     else: 
                         difftorated = dlc_cfg['WSBins'][i] - dlc_cfg['WSRated'][0]
                         difftocutin = dlc_cfg['WSBins'][i] - dlc_cfg['WSBinLow'][0]

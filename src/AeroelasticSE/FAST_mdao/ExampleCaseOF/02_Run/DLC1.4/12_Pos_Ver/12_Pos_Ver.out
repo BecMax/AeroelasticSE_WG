@@ -1,5 +1,5 @@
 
-Predictions were generated on 18-Feb-2019 at 17:43:28 using OpenFAST, compiled as a 64-bit application using single precision at commit v2.1.0-dirty
+Predictions were generated on 19-Feb-2019 at 13:56:30 using OpenFAST, compiled as a 64-bit application using single precision at commit v2.1.0-dirty
  linked with  NWTC Subroutine Library; ElastoDyn; InflowWind; AeroDyn; ServoDyn
 
 Description from the FAST input file: ---

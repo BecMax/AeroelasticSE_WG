@@ -1,0 +1,20 @@
+# FAST Files
+*.out
+*.fst
+*.sum
+*.wnd
+*.bts
+*.xlsc
+*.ech
+
+# Python
+*.pyc
+
+# Eclipse
+*.project
+*.pydevproject
+
+# Paths
+/src/AeroelasticSE/FAST_mdao/ExampleCaseOF/
+/src/AeroelasticSE/FAST_mdao/ExampleCaseOF/04_Wind
+/src/AeroelasticSE/FAST_mdao/ExampleCaseOF/02_Run/DLC1.2/05_a

@@ -19,7 +19,7 @@ False
 ---
 "../../../04_Wind/05_a.bts"
 ---
-"Wind/90m_12mps_twr"
+"../../../04_Wind/05_a"
 False
 ---
 "wasp\Output\basic_5u.bin"

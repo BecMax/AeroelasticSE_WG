@@ -142,6 +142,8 @@ class TurbsimBuilder(turbsiminputs):
          tsinp.write("{}\n".format(self.turbsim_vt.metboundconds.IECstandard))
          tsinp.write("{}\n".format(self.turbsim_vt.metboundconds.IECturbc))
          tsinp.write("{}\n".format(self.turbsim_vt.metboundconds.IEC_WindType))
+         tsinp.write("{}\n".format(self.turbsim_vt.metboundconds.IEC_Vav))
+         tsinp.write("{}\n".format(self.turbsim_vt.metboundconds.IEC_Vref))
          tsinp.write("{}\n".format(self.turbsim_vt.metboundconds.ETMc))
          tsinp.write("{}\n".format(self.turbsim_vt.metboundconds.WindProfileType))
          tsinp.write('"{}"\n'.format(self.turbsim_vt.metboundconds.ProfileFile))

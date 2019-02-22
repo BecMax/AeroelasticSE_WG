@@ -2,7 +2,7 @@
 -----
 -----
 False
-685957985
+1275710421
 "RANLUX"
 False
 False
@@ -24,18 +24,20 @@ True
 90.0
 145.0
 145.0
-0
+8
 0
 
 ----
 "IECKAI"
-"turbulence_user.inp"
+"None"
 "1-ED3"
-"B"
+"16"
 "NTM"
+10.0
+50.0
 "default"
 "PL"
-"shear.profile"
+"None"
 90.
 5
 "default"
@@ -52,9 +54,9 @@ True
 "default"
 
 ----
-"GENERAL"
-"GENERAL"
-"GENERAL"
+"IEC"
+"IEC"
+"IEC"
 "default"
 "default"
 "default"

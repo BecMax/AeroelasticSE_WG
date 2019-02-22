@@ -47,6 +47,8 @@ class metboundconds(object):
          self.IECstandard = ''
          self.IECturbc = ''
          self.IEC_WindType = ''
+         self.IEC_Vave = ''
+         self.IEC_Vref = ''
          self.ETMc = ''
          self.WindProfileType = ''
          self.ProfileFile = ''
