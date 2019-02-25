@@ -1,0 +1,11 @@
+FAST_mdao/DLCrunner.py:                            cfg['writeServo'] = True
+FAST_mdao/FST8_aeroelasticsolver.py:			elif key == 'writeServo':
+FAST_mdao/FST8_aeroelasticsolver.py:				self.reader.writeServo = config[key]
+FAST_mdao/FST8_aeroelasticsolver.py:		self.writer.writeServo = self.reader.writeServo
+Übereinstimmungen in Binärdatei FAST_mdao/FST8_aeroelasticsolver.pyc
+FAST_mdao/FST8_reader.py:        self.writeServo = False
+FAST_mdao/FST8_reader.py:            if self.writeServo == True:
+Übereinstimmungen in Binärdatei FAST_mdao/FST8_reader.pyc
+FAST_mdao/FST8_writer.py:		self.writeServo = False
+FAST_mdao/FST8_writer.py:		if self.writeServo == True:
+Übereinstimmungen in Binärdatei FAST_mdao/FST8_writer.pyc

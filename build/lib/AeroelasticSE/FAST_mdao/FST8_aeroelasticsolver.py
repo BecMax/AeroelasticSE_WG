@@ -89,8 +89,8 @@ class FST8Workflow (Component):
 			# 	self.reader.fst_file_type = config[key]
 			elif key == 'ad_file_type':
 				self.reader.ad_file_type = config[key]
-			elif key == 'pass2Numpy':
-				self.reader.pass2Numpy = config[key]	
+			elif key == 'passToNumpy':
+				self.reader.passToNumpy = config[key]	
 			elif key == 'writeElasto':
 				self.reader.writeElasto = config[key]
 			elif key == 'writeBladeStruc':
@@ -167,8 +167,8 @@ class FST8Workflow (Component):
 		ct = 0
 		for i in range(0, self.outcounter):
 			self.add_output(self.outkeys[i], shape=[self.outsize])
-			print 'output channel is %S' %self.outkeys[i]
-			print 'output channel size is %i' %self.outsize
+			#print 'output channel is %s' %self.outkeys[i]
+			#print 'output channel size is %i' %self.outsize
 			ct = ct + 1
 		self.add_output('Time', shape=[self.outsize])   #add Time variable (included by default)
 		ct = ct + 1
@@ -199,8 +199,8 @@ class FST8Workflow (Component):
 		# Loop over output headers, assign values in 'out' to OpenMDAO outputs
 		# This assumes headers match previously assigned ouputs
 		for i in range(0, len(hdr)):
-			print 'output header is %s' %hdr[i]
-			print 'header data length is %i' %len(out[:,i])						
+			#print 'output header is %s' %hdr[i]
+			#print 'header data length is %iclear' %len(out[:,i])						
 			unknowns[hdr[i]] = out[:,i]   #assigns values to output channel matching header name
 
 

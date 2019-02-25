@@ -15,6 +15,7 @@ import ast
 sys.path.insert(0, os.path.abspath(".."))
 import matplotlib.pyplot as plt
 import pandas as pd
+from os.path import relpath
 
 from openmdao.api import Group, Problem, Component, IndepVarComp
 from openmdao.api import ParallelGroup, ParallelFDGroup
@@ -37,69 +38,80 @@ import argparse
 parser = argparse.ArgumentParser(description='Does some stuff with an input file.')
 
 #add the argument
-parser.add_argument('-i', '--input', dest='infile', required=True,
-                metavar='INPUT_FILE', help='The input file to the script.')
+parser.add_argument('-i', '--input', dest='infile', required=True, metavar='EXCEL_FILE', help='The excel input file.')
+parser.add_argument('-s', '--string', dest='insheet', type=str, required=True, metavar='EXCEL_SHEET', help='The excel sheet as a string.')
 
 #parse and assign to the variable
 args = parser.parse_args()
 infile=args.infile
-print infile
+insheet=args.insheet
 
 # Initial OpenMDAO problem setup for parallel group
 top = Problem(impl=impl, root=ParallelFDGroup(1))
 root = top.root
 
 # ===================== Input Section =====================
-# Setup genral dlc config dictionary
+
+rundir = '02_Run'
+winddir = '04_Wind'
+postdir = '03_Postpro'
+
+# Initialize general dlc config dictionary
 dlc_cfg = {} #dictionary describing what we do
 dlc_cfg['SettingsFromExcel'] = True
-dlc_cfg['ExcelFile'] = 'settings.xlsx'
-dlc_cfg['DLC'] = [1.2]
+dlc_cfg['Standard'] = '' #IEC, DIBT, DNVGL
+dlc_cfg['DLC'] = ''
 dlc_cfg['WindModel'] = ''
 dlc_cfg['WindFileFormat'] = '' # Either Bladed (.wnd) or Turbsim format (.bts)
+dlc_cfg['Generate2ndSeed'] = ''
 dlc_cfg['RunTurbsim'] = False #shall we run turbsim first to generate turbulent wind files?
+dlc_cfg['OutFileFmt'] = [0]
 dlc_cfg['RunFAST'] = False #shall we run FAST?
 
 # Wind speed bins
 dlc_cfg['CalcWSBins'] = False #Shall the Wind Speed Bins be calculated with a fixed bin width; alternatively they can be set
-dlc_cfg['WSBinLow'] = [3.0] #First Wind Speed to consider (generally equal to cut-in); only used if CalcWSBins is True
-dlc_cfg['WSBinHigh'] = [24.0] #Last Wind Speed to consider (generally equal to cut-out); only used if CalcWSBins is True
-dlc_cfg['WSBinWidth'] = [2] #Bin Width; only used if CalcWSBins is True
-dlc_cfg['WSBins'] = [12.0, 15.0]  #WSBins; only used if CalcWSBins is False
-dlc_cfg['WSRated'] = [11.0]  #Rated Windspeed required to calculate difference to Bins from Rated for IECWind generated files
+dlc_cfg['WSBinLow'] = [0.0] #First Wind Speed to consider (generally equal to cut-in); only used if CalcWSBins is True
+dlc_cfg['WSBinHigh'] = [0.0] #Last Wind Speed to consider (generally equal to cut-out); only used if CalcWSBins is True
+dlc_cfg['WSBinWidth'] = [0] #Bin Width; only used if CalcWSBins is True
+dlc_cfg['WSBins'] = [0.0, 0.0]  #WSBins; only used if CalcWSBins is False
+dlc_cfg['WSRated'] = [0.0]  #Rated Windspeed required to calculate difference to Bins from Rated for IECWind generated files
 
 # Seeds, TI Bins, Shear
-dlc_cfg['NoSeeds'] = [2] #Number of Seeds per wind speed bin
-dlc_cfg['NoTIBins'] = [6] #Is the Turbulence Intensity weibull distributed and should be binned?
-dlc_cfg['ShearExp'] = [0.2, 0.16] # Shear Exponents
+dlc_cfg['NoSeeds'] = [0] #Number of Seeds per wind speed bin
+dlc_cfg['NoTIBins'] = [0] #Is the Turbulence Intensity weibull distributed and should be binned?
+dlc_cfg['ShearExp'] = [0.0, 0.0] # Shear Exponents
 dlc_cfg['SignChanges'] = ['',''] # SignChanges negative and positive
 
 # Turbine Angles
-dlc_cfg['WindDir'] = [-8.0, 0.0, 8.0] #Yaw Angles to be used; sets automatically to [0.0] if DiscreteYaw is False
-dlc_cfg['RotorAngles'] = [0.0, 90.0] #Rotor Position Angles to be used; sets automatically to [0.0] if DiscreteRotorPos' is False
-dlc_cfg['PitchAngles'] = [0.0, 90.0] #Pitch Angles to be used; sets automatically to [0.0] if DiscreteRotorPos' is False
+dlc_cfg['WindAsYawMisalignment'] = ''
+dlc_cfg['WindDir'] = [0.0, 0.0] #Yaw Angles to be used; sets automatically to [0.0] if DiscreteYaw is False
+dlc_cfg['RotorAngles'] = [0.0, 0.0] #Rotor Position Angles to be used; sets automatically to [0.0] if DiscreteRotorPos' is False
+dlc_cfg['BladesToPitch'] = [0]
+dlc_cfg['PitchAngles'] = [0.0, 0.0] #Pitch Angles to be used; sets automatically to [0.0] if DiscreteRotorPos' is False
 
 
 # ===================== Some Parameters from Inputs =====================
 
 if dlc_cfg['SettingsFromExcel'] == True:
-    df = pd.read_excel(os.path.join(os.getcwd(), infile), comment='#' ) 
+    df = pd.read_excel(os.path.join(os.getcwd(), infile), comment='#', sheet_name= insheet) 
 
     df = df.set_index('Parameters').T
     for key in dlc_cfg:
         for col in df.columns:
             if key == col:
+                # read as string
+                if col == 'DLC':
+                    dlc_cfg[key] = str(df[col].dropna().to_numpy()[0])
                 # read strings
-                if col == 'WindModel' or col == 'WindFileFormat':
+                elif col == 'Standard' or col == 'WindModel' or col == 'WindFileFormat' or col == 'Generate2ndSeed':
                     dlc_cfg[key] = df[col].dropna().to_numpy()[0]
                     print 'The setting for %s is read from Excel file it is %s' % (col, dlc_cfg[key])
                 # read list of strings
                 elif col == 'SignChanges':
-                    print df[col].dropna().to_numpy()
                     dlc_cfg[key] = df[col].dropna().to_numpy()
                     print 'The setting for %s is read from Excel file its first value equals %s' % (col, dlc_cfg[key][0])
                 # read bools
-                elif col == 'RunTurbsim' or col == 'RunFAST' or col == 'CalcWSBins':
+                elif col == 'RunTurbsim' or col == 'RunFAST' or col == 'CalcWSBins' or col == 'WindAsYawMisalignment':
                     dlc_cfg[key] = ast.literal_eval(df[col].dropna().to_numpy()[0])
                     print 'The setting for %s is read from Excel file it is %r' % (col, dlc_cfg[key])
                 # read floats into array
@@ -107,6 +119,21 @@ if dlc_cfg['SettingsFromExcel'] == True:
                     dlc_cfg[key] = df[col].dropna().to_numpy()
                     print 'The setting for %s is read from Excel file its first value equals %10.4f' % (col, dlc_cfg[key][0])
 
+if dlc_cfg['Standard'] == 'IEC':
+    if dlc_cfg['DLC'][:3] == '1.2' or dlc_cfg['DLC'][:3] == '2.4'  or dlc_cfg['DLC'][:3] == '3.1' or dlc_cfg['DLC'][:3] == '4.1' or dlc_cfg['DLC'][:3] == '6.4':
+        rundir = os.path.join(rundir, 'FLS')
+        postdir = os.path.join(postdir, 'FLS')
+    else:
+        rundir = os.path.join(rundir, 'ULS')
+        postdir = os.path.join(postdir, 'ULS')
+elif dlc_cfg['Standard'] == 'DIBt':
+    if dlc_cfg['DLC'][:3] == 'D.4' or dlc_cfg['DLC'][:3] == '1.2'  or dlc_cfg['DLC'][:3] == '2.4' or dlc_cfg['DLC'][:3] == '3.1' or dlc_cfg['DLC'][:3] == '4.1' or dlc_cfg['DLC'][:3] == '6.4':
+        rundir = os.path.join(rundir, 'FLS')
+        postdir = os.path.join(postdir, 'FLS')
+    else:
+        rundir = os.path.join(rundir, 'ULS')
+        postdir = os.path.join(postdir, 'ULS')
+#elif dlc_cfg['Standard'] == 'DNVGL':        
          
 if dlc_cfg['CalcWSBins'] == True:
     dlc_cfg['WSBins'] = np.arange(dlc_cfg['WSBinLow'][0], dlc_cfg['WSBinHigh'][0], dlc_cfg['WSBinWidth'][0])
@@ -118,13 +145,11 @@ dlc_cfg['NoSeeds'] = dlc_cfg['NoSeeds'][0]
 dlc_cfg['NoTIBins'] = dlc_cfg['NoTIBins'][0]
 
 dlc_cfg['SeedList'] = list(string.ascii_lowercase)[0:dlc_cfg['NoSeeds']]
-dlc_cfg['TIBins'] = np.arange(dlc_cfg['NoTIBins']) + 1
+#dlc_cfg['TIBins'] = np.arange(dlc_cfg['NoTIBins']) + 1
 
 dlc_cfg['NoShearExp'] = len(dlc_cfg['ShearExp'])
 dlc_cfg['NoSignChanges'] = len(dlc_cfg['SignChanges'])
-print 'check'
-print dlc_cfg['SignChanges']
-print dlc_cfg['NoSignChanges']
+
 dlc_cfg['NoWindDir'] = len(dlc_cfg['WindDir'])
 dlc_cfg['NoRotorAngles'] = len(dlc_cfg['RotorAngles'])
 dlc_cfg['NoPitchAngles'] = len(dlc_cfg['PitchAngles'])
@@ -142,7 +167,7 @@ if dlc_cfg['SettingsFromExcel'] == True:
                     idx = np.where(dlc_cfg['WSBins']==idxspeed)
                     dlc_cfg['TIBins'][idx[0][0],:] = TIdata
                 
-print dlc_cfg['TIBins']
+
 
 # ===================== Coding =====================
 
@@ -155,6 +180,7 @@ casestr = 'case_'
 caseids_wind = []
 caseids = []
 short_caseids = []
+counter = 0
 
 for i in range(dlc_cfg['NoWSBins']):
     for j in range(dlc_cfg['NoSeeds']):
@@ -190,23 +216,23 @@ for i in range(dlc_cfg['NoWSBins']):
                     # Turbsim case windfiles
                     if dlc_cfg['WindModel'] == 'NTM':
                         cfg_wind['Turbsim_masterfile'] = 'NTM.inp' 
-                        cfg_wind['Turbsim_masterdir']= './ExampleCaseOF/04_Wind'
+                        cfg_wind['Turbsim_masterdir']= winddir
                         windinput = windid
                     elif dlc_cfg['WindModel'] == 'NWP':
                         # Just NTM without any turbulence, thus TI = 0
                         cfg_wind['Turbsim_masterfile'] = 'NWP.inp' 
-                        cfg_wind['Turbsim_masterdir']= './ExampleCaseOF/04_Wind'
+                        cfg_wind['Turbsim_masterdir']= winddir
                         windinput = windid + '_NWP'
                         pass
                     elif dlc_cfg['WindModel'] == 'ETM':
                         cfg_wind['Turbsim_masterfile'] = 'ETM.inp' 
-                        cfg_wind['Turbsim_masterdir']= './ExampleCaseOF/04_Wind'
+                        cfg_wind['Turbsim_masterdir']= winddir
                         windinput = windid + '_ETM'
                     
                     # These parameters are the same for all turbsim cases    
                     if dlc_cfg['WindModel'] == 'NTM' or dlc_cfg['WindModel'] == 'NWP' or dlc_cfg['WindModel'] == 'ETM':
                         cfg_wind['Turbsim_runfile'] ='{0}.inp'.format(windinput)
-                        cfg_wind['Turbsim_rundir'] = './ExampleCaseOF/04_Wind/' 
+                        cfg_wind['Turbsim_rundir'] = winddir
                         cfg_wind['Turbsim_exe']= 'TurbSim_gwin64'
                     else: 
                         difftorated = dlc_cfg['WSBins'][i] - dlc_cfg['WSRated'][0]
@@ -252,16 +278,24 @@ for i in range(dlc_cfg['NoWSBins']):
                         windinputfile = '{0}.bts'.format(windinput)
 
                     # Only run Turbsim if input wind files are not there
-                    if os.path.isfile(os.path.join('./ExampleCaseOF/04_Wind/', windinputfile)) == False:
+                    if os.path.isfile(os.path.join(winddir, windinputfile)) == False:
                         if dlc_cfg['WindModel'] == 'NTM' or dlc_cfg['WindModel'] == 'NWP' or dlc_cfg['WindModel'] == 'ETM':
                             print 'Wind input file %s does not exist running Turbsim to generate it' % windinputfile
                    
                             caseid_wind = casestr + windid
                             caseids_wind.append(caseid_wind)
+                            
                             # change wind speed
                             cfg_wind['URef'] = dlc_cfg['WSBins'][i]
                             # random seed in range according to turbsim
                             cfg_wind['RandSeed1'] = random.randrange(-2147483648,2147483647,1)
+                            if dlc_cfg['Generate2ndSeed'] == 'RandInt':
+                                cfg_wind['RandSeed2'] = random.randrange(-2147483648,2147483647,1)
+                            # TI
+                            cfg_wind['IECturbc'] = dlc_cfg['TIBins'][i][k] #check this
+                            # Shear exp
+                            cfg_wind['PLExp'] = dlc_cfg['ShearExp'][l]
+
      
                             dlc_cfg['RunTurbsim'] = True
                    
@@ -296,23 +330,30 @@ for i in range(dlc_cfg['NoWSBins']):
                         
                         
                             cfg = {}
-                            print dlc_cfg['DLC'][0]
-                            dlcstring = str(dlc_cfg['DLC'][0])
+                            
+                            dlcstring = dlc_cfg['DLC']
+                            
                             cfg['fst_runfile'] = '{0}.fst'.format(short_caseid)
-                            cfg['fst_rundir'] = os.path.join('./ExampleCaseOF/02_Run/DLC%s/', short_caseid) % dlcstring
+                            cfg['fst_rundir'] = os.path.join(rundir, 'DLC%s', short_caseid) % dlcstring
                         
                             # Filename of inputfile for Wind in InflowWind
-                            cfg['Filename'] = os.path.join('../../../04_Wind/', windinputfile)
+                            reldir = relpath(winddir, cfg['fst_rundir'])
+                            cfg['Filename'] = os.path.join(reldir, windinputfile)
                             cfg['FilenameRoot'] = cfg['Filename'][:-4]
+                            
+                            # Output file format
+                            cfg['OutFileFmt'] = dlc_cfg['OutFileFmt'][0]
+                            if dlc_cfg['OutFileFmt'][0] == 1:
+                                cfg['fst_outfile'] = '{0}.out'.format(short_caseid)
+                            else:
+                                cfg['fst_outfile'] = '{0}.outb'.format(short_caseid)
         
                             # These parameters the same for all cases
                             cfg['fst_masterfile'] = 'DLC%s.fst' % dlcstring
-                            cfg['fst_masterdir']= './ExampleCaseOF/02_Run/DLC%s/case/' % dlcstring
-                            cfg['fst_exe'] = 'openfast' #'FAST_gwin64' #'openfast'
-                            cfg['pass2Numpy'] = True
+                            cfg['fst_masterdir']= os.path.join(rundir, 'DLC%s', 'case') % dlcstring
+                            cfg['fst_exe'] = 'openfast' #'FAST_gwin64'
+                            cfg['passToNumpy'] = True
 
-                        
-                       
                             cfg['writeElasto'] = True
                             cfg['writeBladeStruc'] = False 
                             cfg['writeTower'] = False 
@@ -326,14 +367,30 @@ for i in range(dlc_cfg['NoWSBins']):
                             cfg['copyDLL'] = False
                             cfg['copyDLLinfile'] = False
                             cfg['copyTMDamp'] = False
-        
-                            cfg['PropagationDir'] = dlc_cfg['WindDir'][n]
-                            cfg['Azimuth'] = dlc_cfg['RotorAngles'][p]
+
+                            # Set ElastoDyn inputs (if 'WindAsYawMisalignment' false set in InflowWind)
+                            if dlc_cfg['WindAsYawMisalignment'] == True:
+                                cfg['NacYaw'] = dlc_cfg['WindDir'][n]
+                            else:
+                                cfg['PropagationDir'] = dlc_cfg['WindDir'][n]
+                                
+                            cfg['Azimuth'] = dlc_cfg['RotorAngles'][o]
+                            
+                            if dlc_cfg['BladesToPitch'][0] == 1.:
+                                cfg['BlPitch1'] = dlc_cfg['PitchAngles'][p]
+                            elif dlc_cfg['BladesToPitch'][0] == 2.:
+                                cfg['BlPitch1'] = dlc_cfg['PitchAngles'][p]
+                                cfg['BlPitch2'] = dlc_cfg['PitchAngles'][p]
+                            elif dlc_cfg['BladesToPitch'][0] == 3.:
+                                cfg['BlPitch1'] = dlc_cfg['PitchAngles'][p]
+                                cfg['BlPitch2'] = dlc_cfg['PitchAngles'][p]
+                                cfg['BlPitch3'] = dlc_cfg['PitchAngles'][p]
         
                             # Put dictionary into master dictionary, keyed by caseid
                             cfg_master[caseid] = cfg
-            
-                       
+                            
+                            counter = counter + 1
+                        
 print cfg_master[caseids[i]]
             
 # Add parallel group to omdao problem, pass in master config file
@@ -343,19 +400,32 @@ if dlc_cfg['RunFAST'] == True:
 if dlc_cfg['RunTurbsim'] == True:   
     root.add('ParallelTurbsimCases', TurbSim_Solver(cfg_master_wind, caseids_wind))
 
-
 top.setup()
-
-
-
 
 top.check_setup()
 #view_model(top)
-
 
 top.run()
 
 top.cleanup()   #Good practice, especially when using recorder
 
+# ===================== Write Output files into txt =====================
+
+postdir = os.path.join(postdir, 'DLC%s') % dlcstring
+if not os.path.exists(postdir):
+    os.makedirs(postdir)
+print postdir
+outfiles_file = os.path.join(postdir, 'Outputfiles.txt')
+f = open(outfiles_file, 'w')
+f.write('-----  Input Files  ------------------------------------------------------------\n')
+f.write('{:3}                 NumFiles          The number of input files to read.\n'.format(counter))
+#for id in short_caseids:
+for key, value in sorted(cfg_master.iteritems()):
+    outpath = relpath(cfg_master[key]['fst_rundir'], postdir)
+    print outpath
+    outfile = os.path.join(outpath, cfg_master[key]['fst_outfile'])
+    print outfile
+    f.write('"{:}"\n'.format(outfile))
+f.write('==EOF==                             DO NOT REMOVE OR CHANGE.  MUST COME JUST AFTER LAST LINE OF VALID INPUT.')	
 
 

@@ -1,0 +1,7 @@
+FAST_mdao/DLCrunner.py:                            cfg['pass2Numpy'] = True
+FAST_mdao/FST8_aeroelasticsolver.py:			elif key == 'pass2Numpy':
+FAST_mdao/FST8_aeroelasticsolver.py:				self.reader.pass2Numpy = config[key]	
+Übereinstimmungen in Binärdatei FAST_mdao/FST8_aeroelasticsolver.pyc
+FAST_mdao/FST8_reader.py:        self.pass2Numpy = False
+FAST_mdao/FST8_reader.py:        if self.pass2Numpy == False:
+Übereinstimmungen in Binärdatei FAST_mdao/FST8_reader.pyc

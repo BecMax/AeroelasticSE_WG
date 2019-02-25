@@ -24,7 +24,7 @@ class Fst8InputReader(Fst8InputBase):
         self.ad_file_type = 0   #Enum(0, (0,1), desc='Aerodyn file type, 0=old Aerodyn, 1 = new Aerdyn')  # probably related to ADv14
         self.FSTexe = None   #Path to executable
         
-        self.pass2Numpy = False
+        self.passToNumpy = False
         self.writeElasto = False
         self.writeBladeStruc = False
         self.writeTower = False
@@ -136,7 +136,7 @@ class Fst8InputReader(Fst8InputBase):
         self.fst_vt.visualization.VTK_fps = float(f.readline().split()[0])
 
         # Only deactivate readers if output should not be passed to numpy arrays
-        if self.pass2Numpy == False:
+        if self.passToNumpy == False:
             if self.writeElasto == True:
                 self.ElastoDynReader()
             if self.writeBladeStruc == True:    

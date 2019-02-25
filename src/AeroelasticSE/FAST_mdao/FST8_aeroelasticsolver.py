@@ -89,8 +89,8 @@ class FST8Workflow (Component):
 			# 	self.reader.fst_file_type = config[key]
 			elif key == 'ad_file_type':
 				self.reader.ad_file_type = config[key]
-			elif key == 'pass2Numpy':
-				self.reader.pass2Numpy = config[key]	
+			elif key == 'passToNumpy':
+				self.reader.passToNumpy = config[key]	
 			elif key == 'writeElasto':
 				self.reader.writeElasto = config[key]
 			elif key == 'writeBladeStruc':
@@ -115,6 +115,8 @@ class FST8Workflow (Component):
 				self.writer.copyDLLinfile = config[key]
 			elif key == 'copyTMDamp': 
 				self.writer.copyTMDamp = config[key]
+			elif key == 'copyTMDamp': 
+				self.writer.copyTMDamp = config[key]	
 			#elif key == 'libmap':
 			#	self.wrapper.libmap = config[key]
 		
