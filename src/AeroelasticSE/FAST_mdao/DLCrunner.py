@@ -292,9 +292,11 @@ for i in range(dlc_cfg['NoWSBins']):
                             if dlc_cfg['Generate2ndSeed'] == 'RandInt':
                                 cfg_wind['RandSeed2'] = random.randrange(-2147483648,2147483647,1)
                             # TI
-                            cfg_wind['IECturbc'] = dlc_cfg['TIBins'][i][k] #check this
+                            if dlc_cfg['NoTIBins'] > 1:
+                                cfg_wind['IECturbc'] = dlc_cfg['TIBins'][i][k] #check this
                             # Shear exp
-                            cfg_wind['PLExp'] = dlc_cfg['ShearExp'][l]
+                            if dlc_cfg['NoShearExp'] > 1:
+                                cfg_wind['PLExp'] = dlc_cfg['ShearExp'][l]
 
      
                             dlc_cfg['RunTurbsim'] = True
